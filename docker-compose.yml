@@ -3,7 +3,8 @@ version: '3.6'
 services:
   nodered:
     # image: ghcr.io/ct-open-source/ctnodered:latest
-    build: ./docker-image
+    build:
+      context: ./docker-image
       no_cache: true
       args:
         ARCH: amd64
