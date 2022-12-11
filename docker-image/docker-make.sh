@@ -7,7 +7,7 @@ echo "#########################################################################"
 
 docker build --no-cache \
     --build-arg ARCH=amd64 \
-    --build-arg NODE_VERSION=12 \
+    --build-arg NODE_VERSION=lts \
     --build-arg NODE_RED_VERSION=${NODE_RED_VERSION} \
     --build-arg OS=alpine \
     --build-arg BUILD_DATE="$(date +"%Y-%m-%dT%H:%M:%SZ")" \

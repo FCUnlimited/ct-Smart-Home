@@ -62,8 +62,8 @@ ARG ARCH
 ARG NODE_RED_VERSION=latest
 ARG TAG_SUFFIX=default
 
-LABEL org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.docker.dockerfile="Dockerfile" \
+# org.label-schema.build-date=${BUILD_DATE} \
+LABEL org.label-schema.docker.dockerfile="Dockerfile" \
     org.label-schema.license="Apache-2.0" \
     org.label-schema.name="Node-RED for c't-Smart-Home" \
     org.label-schema.version=${BUILD_VERSION} \
