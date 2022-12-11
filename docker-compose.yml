@@ -4,7 +4,7 @@ services:
   nodered:
     # image: ghcr.io/ct-open-source/ctnodered:latest
     build: ./docker-image
-      no_cache:
+      no_cache: true
       args:
         ARCH: amd64
         NODE_VERSION: lts
