@@ -1,3 +1,7 @@
+I updated the ct repository to be able to use NodeRed 3.0.
+The docker image is now build locally. So could take some time to on less powerfull machines.
+Therefor you can change whatever you want in the Dockerfile
+
 # c't-Smart-Home
 
 A ready-to-use Node-RED setup for home automation maintained by [german computer magazine c't](https://www.ct.de/smarthome).
@@ -145,21 +149,21 @@ The Node-RED container image is a variation on [the official one](https://hub.do
 
 The `:latest` image is rebuild upon new releases and updated weekly to include updates to Node-RED and the underlying libraries. The `:devel` images are being rebuilt every night.
 
-| Container-Tag | Node-RED version | Node.js version | Notes | Arch |
-| - | - | - | - | - |
-| **Release versions**
-| **latest** | **latest release version** | **12** | latest release version | all |
-| latest-10 | 1.x | 10 | latest release version | all |
-| latest-12 | 1.x | 12 | latest release version | all |
-| latest-14 | 1.x | 14 | latest release version | all |
+| Container-Tag            | Node-RED version           | Node.js version | Notes                        | Arch    |
+| ------------------------ | -------------------------- | --------------- | ---------------------------- | ------- |
+| **Release versions**     |
+| **latest**               | **latest release version** | **12**          | latest release version       | all     |
+| latest-10                | 1.x                        | 10              | latest release version       | all     |
+| latest-12                | 1.x                        | 12              | latest release version       | all     |
+| latest-14                | 1.x                        | 14              | latest release version       | all     |
 | **Development versions** |
-| **devel** | **latest devel version** | **14** | **build from current devel** | all |
-| devel-10 | 1.x | 10 | build from current devel  | all |
-| devel-12 | 1.x | 12 | build from current devel  | all |
-| devel-14 | 1.x | 14 | build from current devel  | all |
-| **Deprecated relases** |
-| release-1.1.1-amd64 | 0.20.5 | 8 | deprecated | amd64 |
-| release-1.1.1-arm32v7 | 0.20.5 | 8 | deprecated | arm32v7 |
+| **devel**                | **latest devel version**   | **14**          | **build from current devel** | all     |
+| devel-10                 | 1.x                        | 10              | build from current devel     | all     |
+| devel-12                 | 1.x                        | 12              | build from current devel     | all     |
+| devel-14                 | 1.x                        | 14              | build from current devel     | all     |
+| **Deprecated relases**   |
+| release-1.1.1-amd64      | 0.20.5                     | 8               | deprecated                   | amd64   |
+| release-1.1.1-arm32v7    | 0.20.5                     | 8               | deprecated                   | arm32v7 |
 
 We also use the `:latest` versions of [Eclipse Mosquitto](https://hub.docker.com/_/eclipse-mosquitto) and [Zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt.io).
 
