@@ -3,6 +3,7 @@ ARG OS=alpine
 
 #### Stage BASE ########################################################################################################
 FROM node:${NODE_VERSION}-${OS} AS base
+USER root
 
 # Copy scripts
 COPY scripts/*.sh /tmp/
@@ -23,6 +24,7 @@ RUN set -ex && \
     avahi-compat-libdns_sd \
     dbus \
     ffmpeg \
+    libcap \
     bluez &&\
     dbus-uuidgen --ensure && \
     mkdir -p /usr/src/node-red /data && \
@@ -41,15 +43,16 @@ COPY package.json .
 FROM base AS build
 
 # Install Build tools
-RUN apk add --no-cache --virtual buildtools build-base linux-headers udev eudev-dev avahi-dev libusb-dev libc-dev python3 && \
-    npx npm-check-updates -u && \
-    npm install --unsafe-perm --no-update-notifier --only=production --no-optional && \
-    /tmp/remove_native_gpio.sh && \
-    npm dedupe && \
-    npm cache clean --force && \
-    npm prune --production && \
-    apk del buildtools && \
-    cp -R node_modules prod_node_modules
+RUN apk add --no-cache --virtual buildtools build-base linux-headers udev eudev-dev avahi-dev libusb-dev libc-dev python3
+RUN npm install -g npm@9.2.0
+RUN npx npm-check-updates -u --verbose
+RUN npm install --unsafe-perm --no-update-notifier --only=production --no-optional
+RUN /tmp/remove_native_gpio.sh
+RUN npm dedupe
+RUN npm cache clean --force
+RUN npm prune --production
+RUN apk del buildtools
+RUN cp -R node_modules prod_node_modules
 
 
 #### Stage RELEASE #####################################################################################################
